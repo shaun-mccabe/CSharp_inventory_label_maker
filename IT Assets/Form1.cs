@@ -1,5 +1,4 @@
-﻿using IT_Assets.AssetsDataSetTableAdapters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +11,14 @@ using System.Windows.Forms;
 namespace IT_Assets
 {
     public partial class frm_main : Form
-    {
+    {   
         public frm_main()
         {
             InitializeComponent();
         }
-        asset_items_TableAdapter items = new asset_items_TableAdapter();
-        private void btn_generateTracking_Click(object sender, EventArgs e)
+
+        data data = new data();
+       private void btn_generateTracking_Click(object sender, EventArgs e)
         {
             int trackingNumber = new Random().Next(1000, 5000);
             txt_trackingNumber.Text = trackingNumber.ToString();
@@ -40,21 +40,23 @@ namespace IT_Assets
 
         private void btn_submit_Click(object sender, EventArgs e)
         {
-          item  obj_items = new item(txtType.Text, txtName.Text, txt_serialNumber.Text, txt_modelNumber.Text, txt_description.Text, txt_trackingNumber.Text);
+          item  obj_items = new item(txtType.Text, txtName.Text, txt_serialNumber.Text, txt_modelNumber.Text, txt_description.Text, txt_photopath.Text, txt_trackingNumber.Text);
             //items.save_item();
-            data pushData = new data();
-            pushData.Set(obj_items);
-            dgv_items.DataSource = items.GetData();
-            
+                       
 
         }
 
        
         private void frm_main_Load(object sender, EventArgs e)
         {
-            
-
-            dgv_items.DataSource = items.GetData();
+            if (data.status)
+            {
+                Console.WriteLine(data.status);
+            }
+            else
+            {
+                Console.WriteLine(data.status);
+            }
 
         }
     }

@@ -5,63 +5,96 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
-using IT_Assets.AssetsDataSetTableAdapters;
 using System.Data;
-
+using static System.Net.Mime.MediaTypeNames;
+using System.Windows.Forms;
+using System.Data.OleDb;
+using System.Data.SQLite;
 
 namespace IT_Assets
 {
     internal class data
+
     {
-        private item obj_item;
+        private string connectionString;
+        private SQLiteConnection conn;
 
-        public void Set(item items)
-        {
-            this.obj_item = items;
-            push_to_db(items);
-
+        public data() {
+            connectionString = ConfigurationManager.ConnectionStrings["ItemConnection"].ConnectionString;
+            
+            status = getStatus();
+            buildTables();
         }
 
+        public bool status { get; private set; }
 
-        private string get_connection_string()
+
+
+
+
+        private bool getStatus()
         {
-            return System.Configuration.ConfigurationManager.ConnectionStrings["IT_Assets.Properties.Settings.AssetsConnectionString"].ConnectionString;
+            if (connectionString != null)
 
-        }
-
-
-        private bool push_to_db(item item_object)
-        {
-            Console.WriteLine("Made it to push");
-            Console.Write(item_object.str_company_tracking_number);
-
-
-            using (SqlConnection conn = new SqlConnection(get_connection_string()))
             {
-                AssetsDataSet ds = new AssetsDataSet();
-                asset_items_TableAdapter adapter = new asset_items_TableAdapter();
-                adapter.Fill(ds.asset_items);
-
-                try
+                SQLiteConnection conn = new SQLiteConnection(connectionString);
+                using (conn)
                 {
-                    conn.Open();
-                    Console.Write("connection open");
-                    adapter.InsertItem(item_object.str_type, item_object.str_name, obj_item.str_serial, obj_item.str_model, obj_item.str_description, obj_item.str_company_tracking_number);
-                    adapter.Update(ds.asset_items);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
+                    try
+                    {
+                        // Open the connection
+                        conn.Open();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Connection Eror");
+                        return false;
+                    }
+                    finally
+                    {
+                        conn.Close();
 
-                }
-                finally
-                {
-                    conn.Close();
-                    Console.Write("connection closed");
-                }
+                    }
 
-            }
-            return false;
+                    return true;
+                }
+            
+            }else {
+                MessageBox.Show(connectionString);
+                return false; }
+
+           
         }
+
+        private void buildTables()
+        {
+            try
+            {
+                SQLiteConnection conn = new SQLiteConnection(connectionString);
+                conn.Open();
+                string createTableSql = @"CREATE TABLE IF NOT EXISTS items(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                company_tracking_number TEXT,
+                name TEXT,
+                serial TEXT,
+                model TEXT,
+                description TEXT,
+                photo TEXT
+                )";
+                using (SQLiteCommand command = new SQLiteCommand(createTableSql, conn))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Creating Table");
+            }
+           
+        }
+
+
     }
+
+    
 }

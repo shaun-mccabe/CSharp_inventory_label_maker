@@ -44,10 +44,13 @@
             this.btn_print = new System.Windows.Forms.Button();
             this.lbl_for_txtName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.dgv_items = new System.Windows.Forms.DataGridView();
-            this.assetsDataSet = new IT_Assets.AssetsDataSet();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_items)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.assetsDataSet)).BeginInit();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.btn_Delete = new System.Windows.Forms.Button();
+            this.ts_mainToolStrip = new System.Windows.Forms.ToolStrip();
+            this.ts_settings = new System.Windows.Forms.ToolStripButton();
+            this.lbl_for_PhotoPath = new System.Windows.Forms.Label();
+            this.txt_photopath = new System.Windows.Forms.TextBox();
+            this.ts_mainToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtType
@@ -154,7 +157,7 @@
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(554, 209);
+            this.btn_submit.Location = new System.Drawing.Point(350, 209);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(101, 23);
             this.btn_submit.TabIndex = 8;
@@ -164,7 +167,7 @@
             // 
             // btn_print
             // 
-            this.btn_print.Location = new System.Drawing.Point(661, 209);
+            this.btn_print.Location = new System.Drawing.Point(541, 262);
             this.btn_print.Name = "btn_print";
             this.btn_print.Size = new System.Drawing.Size(99, 23);
             this.btn_print.TabIndex = 9;
@@ -187,25 +190,69 @@
             this.txtName.Size = new System.Drawing.Size(216, 20);
             this.txtName.TabIndex = 1;
             // 
-            // dgv_items
+            // listBox1
             // 
-            this.dgv_items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_items.Location = new System.Drawing.Point(29, 267);
-            this.dgv_items.Name = "dgv_items";
-            this.dgv_items.Size = new System.Drawing.Size(1084, 136);
-            this.dgv_items.TabIndex = 17;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(59, 248);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(476, 108);
+            this.listBox1.TabIndex = 17;
             // 
-            // assetsDataSet
+            // btn_Delete
             // 
-            this.assetsDataSet.DataSetName = "AssetsDataSet";
-            this.assetsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.btn_Delete.Location = new System.Drawing.Point(541, 291);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(99, 23);
+            this.btn_Delete.TabIndex = 10;
+            this.btn_Delete.Text = "Delete";
+            this.btn_Delete.UseVisualStyleBackColor = true;
+            // 
+            // ts_mainToolStrip
+            // 
+            this.ts_mainToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ts_settings});
+            this.ts_mainToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.ts_mainToolStrip.Name = "ts_mainToolStrip";
+            this.ts_mainToolStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ts_mainToolStrip.Size = new System.Drawing.Size(1143, 25);
+            this.ts_mainToolStrip.TabIndex = 100;
+            // 
+            // ts_settings
+            // 
+            this.ts_settings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ts_settings.Image = global::IT_Assets.Properties.Resources.Gear_icon;
+            this.ts_settings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ts_settings.Name = "ts_settings";
+            this.ts_settings.Size = new System.Drawing.Size(23, 22);
+            this.ts_settings.Text = "Settings";
+            // 
+            // lbl_for_PhotoPath
+            // 
+            this.lbl_for_PhotoPath.AutoSize = true;
+            this.lbl_for_PhotoPath.Location = new System.Drawing.Point(661, 174);
+            this.lbl_for_PhotoPath.Name = "lbl_for_PhotoPath";
+            this.lbl_for_PhotoPath.Size = new System.Drawing.Size(60, 13);
+            this.lbl_for_PhotoPath.TabIndex = 102;
+            this.lbl_for_PhotoPath.Text = "Photo Path";
+            // 
+            // txt_photopath
+            // 
+            this.txt_photopath.Location = new System.Drawing.Point(819, 171);
+            this.txt_photopath.Name = "txt_photopath";
+            this.txt_photopath.ReadOnly = true;
+            this.txt_photopath.Size = new System.Drawing.Size(216, 20);
+            this.txt_photopath.TabIndex = 101;
             // 
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1143, 650);
-            this.Controls.Add(this.dgv_items);
+            this.ClientSize = new System.Drawing.Size(1143, 460);
+            this.Controls.Add(this.lbl_for_PhotoPath);
+            this.Controls.Add(this.txt_photopath);
+            this.Controls.Add(this.ts_mainToolStrip);
+            this.Controls.Add(this.btn_Delete);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.lbl_for_txtName);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.btn_print);
@@ -225,8 +272,8 @@
             this.Name = "frm_main";
             this.Text = "IT Asset Label Printer";
             this.Load += new System.EventHandler(this.frm_main_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_items)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.assetsDataSet)).EndInit();
+            this.ts_mainToolStrip.ResumeLayout(false);
+            this.ts_mainToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,8 +297,12 @@
         private System.Windows.Forms.Button btn_print;
         private System.Windows.Forms.Label lbl_for_txtName;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.DataGridView dgv_items;
-        private AssetsDataSet assetsDataSet;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btn_Delete;
+        private System.Windows.Forms.ToolStrip ts_mainToolStrip;
+        private System.Windows.Forms.ToolStripButton ts_settings;
+        private System.Windows.Forms.Label lbl_for_PhotoPath;
+        private System.Windows.Forms.TextBox txt_photopath;
     }
 }
 
