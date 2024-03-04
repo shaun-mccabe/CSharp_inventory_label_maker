@@ -138,9 +138,6 @@
   <ItemGroup>
     <None Include="Resources\Gear-icon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="ITAssets.accdb" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

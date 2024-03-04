@@ -17,8 +17,7 @@ namespace IT_Assets
 
     {
         private string connectionString;
-        private SQLiteConnection conn;
-
+        
         public data() {
             connectionString = ConfigurationManager.ConnectionStrings["ItemConnection"].ConnectionString;
             
