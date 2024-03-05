@@ -44,13 +44,25 @@
             this.btn_print = new System.Windows.Forms.Button();
             this.lbl_for_txtName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.btn_Delete = new System.Windows.Forms.Button();
             this.ts_mainToolStrip = new System.Windows.Forms.ToolStrip();
             this.ts_settings = new System.Windows.Forms.ToolStripButton();
             this.lbl_for_PhotoPath = new System.Windows.Forms.Label();
             this.txt_photopath = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.item_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.item_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.item_serial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.item_modelNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.item_description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.item_photo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.item_trackingNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picBox_Camera_image = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.ts_mainToolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_Camera_image)).BeginInit();
             this.SuspendLayout();
             // 
             // txtType
@@ -157,7 +169,7 @@
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(350, 209);
+            this.btn_submit.Location = new System.Drawing.Point(59, 209);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(101, 23);
             this.btn_submit.TabIndex = 8;
@@ -167,7 +179,7 @@
             // 
             // btn_print
             // 
-            this.btn_print.Location = new System.Drawing.Point(541, 262);
+            this.btn_print.Location = new System.Drawing.Point(61, 238);
             this.btn_print.Name = "btn_print";
             this.btn_print.Size = new System.Drawing.Size(99, 23);
             this.btn_print.TabIndex = 9;
@@ -190,17 +202,9 @@
             this.txtName.Size = new System.Drawing.Size(216, 20);
             this.txtName.TabIndex = 1;
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(59, 248);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(476, 108);
-            this.listBox1.TabIndex = 17;
-            // 
             // btn_Delete
             // 
-            this.btn_Delete.Location = new System.Drawing.Point(541, 291);
+            this.btn_Delete.Location = new System.Drawing.Point(61, 267);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(99, 23);
             this.btn_Delete.TabIndex = 10;
@@ -229,7 +233,7 @@
             // lbl_for_PhotoPath
             // 
             this.lbl_for_PhotoPath.AutoSize = true;
-            this.lbl_for_PhotoPath.Location = new System.Drawing.Point(661, 174);
+            this.lbl_for_PhotoPath.Location = new System.Drawing.Point(753, 15);
             this.lbl_for_PhotoPath.Name = "lbl_for_PhotoPath";
             this.lbl_for_PhotoPath.Size = new System.Drawing.Size(60, 13);
             this.lbl_for_PhotoPath.TabIndex = 102;
@@ -237,22 +241,105 @@
             // 
             // txt_photopath
             // 
-            this.txt_photopath.Location = new System.Drawing.Point(819, 171);
+            this.txt_photopath.Location = new System.Drawing.Point(819, 12);
             this.txt_photopath.Name = "txt_photopath";
             this.txt_photopath.ReadOnly = true;
             this.txt_photopath.Size = new System.Drawing.Size(216, 20);
             this.txt_photopath.TabIndex = 101;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.item_name,
+            this.item_type,
+            this.item_serial,
+            this.item_modelNumber,
+            this.item_description,
+            this.item_photo,
+            this.item_trackingNumber});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 344);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.Size = new System.Drawing.Size(1143, 165);
+            this.dataGridView1.TabIndex = 103;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "RecordID";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // item_name
+            // 
+            this.item_name.HeaderText = "Name";
+            this.item_name.Name = "item_name";
+            // 
+            // item_type
+            // 
+            this.item_type.HeaderText = "Type";
+            this.item_type.Name = "item_type";
+            // 
+            // item_serial
+            // 
+            this.item_serial.HeaderText = "Serial Number";
+            this.item_serial.Name = "item_serial";
+            // 
+            // item_modelNumber
+            // 
+            this.item_modelNumber.HeaderText = "Model Number";
+            this.item_modelNumber.Name = "item_modelNumber";
+            // 
+            // item_description
+            // 
+            this.item_description.HeaderText = "Description";
+            this.item_description.Name = "item_description";
+            // 
+            // item_photo
+            // 
+            this.item_photo.HeaderText = "Photo Path";
+            this.item_photo.Name = "item_photo";
+            this.item_photo.Visible = false;
+            // 
+            // item_trackingNumber
+            // 
+            this.item_trackingNumber.HeaderText = "Internal Tracking Number";
+            this.item_trackingNumber.Name = "item_trackingNumber";
+            // 
+            // picBox_Camera_image
+            // 
+            this.picBox_Camera_image.Location = new System.Drawing.Point(664, 41);
+            this.picBox_Camera_image.Name = "picBox_Camera_image";
+            this.picBox_Camera_image.Size = new System.Drawing.Size(321, 248);
+            this.picBox_Camera_image.TabIndex = 104;
+            this.picBox_Camera_image.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(774, 295);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 105;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1143, 460);
+            this.ClientSize = new System.Drawing.Size(1143, 509);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.picBox_Camera_image);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lbl_for_PhotoPath);
             this.Controls.Add(this.txt_photopath);
             this.Controls.Add(this.ts_mainToolStrip);
             this.Controls.Add(this.btn_Delete);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.lbl_for_txtName);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.btn_print);
@@ -274,6 +361,8 @@
             this.Load += new System.EventHandler(this.frm_main_Load);
             this.ts_mainToolStrip.ResumeLayout(false);
             this.ts_mainToolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_Camera_image)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,12 +386,22 @@
         private System.Windows.Forms.Button btn_print;
         private System.Windows.Forms.Label lbl_for_txtName;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.ToolStrip ts_mainToolStrip;
         private System.Windows.Forms.ToolStripButton ts_settings;
         private System.Windows.Forms.Label lbl_for_PhotoPath;
         private System.Windows.Forms.TextBox txt_photopath;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn item_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn item_type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn item_serial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn item_modelNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn item_description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn item_photo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn item_trackingNumber;
+        private System.Windows.Forms.PictureBox picBox_Camera_image;
+        private System.Windows.Forms.Button button1;
     }
 }
 
