@@ -12,10 +12,19 @@ namespace IT_Assets
 {
     internal class item
     {
-        public string str_type, str_name, str_serial, str_model, str_description, str_photo_path, str_company_tracking_number;
-
-        public item(string type, string name, string serial, string model, string description,string photo_path, string company_tracking_number)
+        public string  str_type, str_name, str_serial, str_model, str_description, str_photo_path, str_company_tracking_number;
+        public int int_Id;
+        public item(
+            string type,
+            string name,
+            string serial, 
+            string model,
+            string description,
+            string photo_path, 
+            string company_tracking_number,
+            int id = 0)
         {
+            int_Id = id;
             str_type = type;
             str_name = name;
             str_serial = serial;

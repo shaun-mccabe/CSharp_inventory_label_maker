@@ -16,7 +16,7 @@ namespace IT_Assets
     internal class data
 
     {
-        private string connectionString;
+        protected string connectionString;
         
         public data() {
             connectionString = ConfigurationManager.ConnectionStrings["ItemConnection"].ConnectionString;
@@ -73,12 +73,13 @@ namespace IT_Assets
                 conn.Open();
                 string createTableSql = @"CREATE TABLE IF NOT EXISTS items(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                company_tracking_number TEXT,
-                name TEXT,
-                serial TEXT,
-                model TEXT,
-                description TEXT,
-                photo TEXT
+                company_tracking_number TEXT NULL,
+                name TEXT NULL,
+                type TEXT NULL,
+                serial TEXT NULL,
+                model TEXT NULL,
+                description TEXT NULL,
+                photo TEXT NULL
                 )";
                 using (SQLiteCommand command = new SQLiteCommand(createTableSql, conn))
                 {

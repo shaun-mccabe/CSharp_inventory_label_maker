@@ -5,6 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
+
+//using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,6 +21,7 @@ namespace IT_Assets
         }
 
         data data = new data();
+       
        private void btn_generateTracking_Click(object sender, EventArgs e)
         {
             int trackingNumber = new Random().Next(1000, 5000);
@@ -41,23 +45,76 @@ namespace IT_Assets
         private void btn_submit_Click(object sender, EventArgs e)
         {
           item  obj_items = new item(txtType.Text, txtName.Text, txt_serialNumber.Text, txt_modelNumber.Text, txt_description.Text, txt_photopath.Text, txt_trackingNumber.Text);
-            //items.save_item();
-                       
+
+            item_model model = new item_model();
+            var inserted = model.insert(obj_items);
+            if (inserted > -1)
+            {
+                load_data_gridview();
+            }
 
         }
 
-       
+
         private void frm_main_Load(object sender, EventArgs e)
         {
-            if (data.status)
-            {
-                Console.WriteLine(data.status);
-            }
-            else
-            {
-                Console.WriteLine(data.status);
-            }
+            //load datagrid data
+            load_data_gridview();
 
         }
+
+        #region 
+        //Designer Functions
+
+        //loading-reloading the data grid
+
+        private void load_data_gridview()
+        {
+                if (data.status)
+                {
+                    Console.WriteLine(data.status);
+                    item_model item_Model = new item_model();
+                    
+                    List<item> das_Items = item_Model.select();
+
+                    dataGridView1.Rows.Clear();
+                    //dataGridView1.Columns.Clear();
+
+
+
+                    foreach (item currentItem in das_Items)
+                    {
+                        dataGridView1.Rows.Add(
+                    currentItem.int_Id,
+                    currentItem.str_name,
+                    currentItem.str_type,
+                    currentItem.str_serial,
+                    currentItem.str_model,
+                    currentItem.str_description,
+                    currentItem.str_photo_path,
+                    currentItem.str_company_tracking_number);
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(data.status);
+                }
+
+            }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
-}
+
+        
+
+        #endregion
+
+
+    }
+
