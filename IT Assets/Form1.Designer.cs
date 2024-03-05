@@ -59,7 +59,8 @@
             this.item_photo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.item_trackingNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.picBox_Camera_image = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cbo_VideoInputDevice = new System.Windows.Forms.ComboBox();
+            this.btn_BrowsePath = new System.Windows.Forms.Button();
             this.ts_mainToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Camera_image)).BeginInit();
@@ -233,7 +234,7 @@
             // lbl_for_PhotoPath
             // 
             this.lbl_for_PhotoPath.AutoSize = true;
-            this.lbl_for_PhotoPath.Location = new System.Drawing.Point(753, 15);
+            this.lbl_for_PhotoPath.Location = new System.Drawing.Point(596, 298);
             this.lbl_for_PhotoPath.Name = "lbl_for_PhotoPath";
             this.lbl_for_PhotoPath.Size = new System.Drawing.Size(60, 13);
             this.lbl_for_PhotoPath.TabIndex = 102;
@@ -241,10 +242,10 @@
             // 
             // txt_photopath
             // 
-            this.txt_photopath.Location = new System.Drawing.Point(819, 12);
+            this.txt_photopath.Location = new System.Drawing.Point(664, 291);
             this.txt_photopath.Name = "txt_photopath";
             this.txt_photopath.ReadOnly = true;
-            this.txt_photopath.Size = new System.Drawing.Size(216, 20);
+            this.txt_photopath.Size = new System.Drawing.Size(321, 20);
             this.txt_photopath.TabIndex = 101;
             // 
             // dataGridView1
@@ -318,22 +319,33 @@
             this.picBox_Camera_image.TabIndex = 104;
             this.picBox_Camera_image.TabStop = false;
             // 
-            // button1
+            // cbo_VideoInputDevice
             // 
-            this.button1.Location = new System.Drawing.Point(774, 295);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 105;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.cbo_VideoInputDevice.FormattingEnabled = true;
+            this.cbo_VideoInputDevice.Location = new System.Drawing.Point(664, 14);
+            this.cbo_VideoInputDevice.Name = "cbo_VideoInputDevice";
+            this.cbo_VideoInputDevice.Size = new System.Drawing.Size(321, 21);
+            this.cbo_VideoInputDevice.TabIndex = 106;
+            this.cbo_VideoInputDevice.Text = "Video Input Devices";
+            this.cbo_VideoInputDevice.SelectedIndexChanged += new System.EventHandler(this.cbo_VideoInputDevice_SelectedIndexChanged);
+            // 
+            // btn_BrowsePath
+            // 
+            this.btn_BrowsePath.Location = new System.Drawing.Point(991, 289);
+            this.btn_BrowsePath.Name = "btn_BrowsePath";
+            this.btn_BrowsePath.Size = new System.Drawing.Size(25, 23);
+            this.btn_BrowsePath.TabIndex = 107;
+            this.btn_BrowsePath.Text = "...";
+            this.btn_BrowsePath.UseVisualStyleBackColor = true;
+            this.btn_BrowsePath.Click += new System.EventHandler(this.btn_BrowsePath_Click);
             // 
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1143, 509);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_BrowsePath);
+            this.Controls.Add(this.cbo_VideoInputDevice);
             this.Controls.Add(this.picBox_Camera_image);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lbl_for_PhotoPath);
@@ -358,6 +370,7 @@
             this.Controls.Add(this.txtType);
             this.Name = "frm_main";
             this.Text = "IT Asset Label Printer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_main_FormClosing);
             this.Load += new System.EventHandler(this.frm_main_Load);
             this.ts_mainToolStrip.ResumeLayout(false);
             this.ts_mainToolStrip.PerformLayout();
@@ -401,7 +414,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn item_photo;
         private System.Windows.Forms.DataGridViewTextBoxColumn item_trackingNumber;
         private System.Windows.Forms.PictureBox picBox_Camera_image;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cbo_VideoInputDevice;
+        private System.Windows.Forms.Button btn_BrowsePath;
     }
 }
 
