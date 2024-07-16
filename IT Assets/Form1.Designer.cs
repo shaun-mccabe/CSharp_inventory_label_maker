@@ -61,6 +61,10 @@
             this.picBox_Camera_image = new System.Windows.Forms.PictureBox();
             this.cbo_VideoInputDevice = new System.Windows.Forms.ComboBox();
             this.btn_BrowsePath = new System.Windows.Forms.Button();
+            this.btn_startCamera = new System.Windows.Forms.Button();
+            this.btn_StopCamera = new System.Windows.Forms.Button();
+            this.cbo_PrinterSelection = new System.Windows.Forms.ComboBox();
+            this.btn_export = new System.Windows.Forms.Button();
             this.ts_mainToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_Camera_image)).BeginInit();
@@ -186,6 +190,7 @@
             this.btn_print.TabIndex = 9;
             this.btn_print.Text = "Print Label";
             this.btn_print.UseVisualStyleBackColor = true;
+            this.btn_print.Click += new System.EventHandler(this.btn_print_Click);
             // 
             // lbl_for_txtName
             // 
@@ -211,6 +216,7 @@
             this.btn_Delete.TabIndex = 10;
             this.btn_Delete.Text = "Delete";
             this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // ts_mainToolStrip
             // 
@@ -219,7 +225,7 @@
             this.ts_mainToolStrip.Location = new System.Drawing.Point(0, 0);
             this.ts_mainToolStrip.Name = "ts_mainToolStrip";
             this.ts_mainToolStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ts_mainToolStrip.Size = new System.Drawing.Size(1143, 25);
+            this.ts_mainToolStrip.Size = new System.Drawing.Size(1156, 25);
             this.ts_mainToolStrip.TabIndex = 100;
             // 
             // ts_settings
@@ -262,11 +268,11 @@
             this.item_photo,
             this.item_trackingNumber});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 344);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 362);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(1143, 165);
+            this.dataGridView1.Size = new System.Drawing.Size(1156, 165);
             this.dataGridView1.TabIndex = 103;
             // 
             // id
@@ -327,7 +333,6 @@
             this.cbo_VideoInputDevice.Size = new System.Drawing.Size(321, 21);
             this.cbo_VideoInputDevice.TabIndex = 106;
             this.cbo_VideoInputDevice.Text = "Video Input Devices";
-            this.cbo_VideoInputDevice.SelectedIndexChanged += new System.EventHandler(this.cbo_VideoInputDevice_SelectedIndexChanged);
             // 
             // btn_BrowsePath
             // 
@@ -339,11 +344,53 @@
             this.btn_BrowsePath.UseVisualStyleBackColor = true;
             this.btn_BrowsePath.Click += new System.EventHandler(this.btn_BrowsePath_Click);
             // 
+            // btn_startCamera
+            // 
+            this.btn_startCamera.Location = new System.Drawing.Point(1030, 14);
+            this.btn_startCamera.Name = "btn_startCamera";
+            this.btn_startCamera.Size = new System.Drawing.Size(75, 23);
+            this.btn_startCamera.TabIndex = 108;
+            this.btn_startCamera.Text = "Start Camera";
+            this.btn_startCamera.UseVisualStyleBackColor = true;
+            this.btn_startCamera.Click += new System.EventHandler(this.btn_startCamera_Click);
+            // 
+            // btn_StopCamera
+            // 
+            this.btn_StopCamera.Location = new System.Drawing.Point(1030, 43);
+            this.btn_StopCamera.Name = "btn_StopCamera";
+            this.btn_StopCamera.Size = new System.Drawing.Size(75, 23);
+            this.btn_StopCamera.TabIndex = 109;
+            this.btn_StopCamera.Text = "Stop Camera";
+            this.btn_StopCamera.UseVisualStyleBackColor = true;
+            this.btn_StopCamera.Click += new System.EventHandler(this.btn_StopCamera_Click);
+            // 
+            // cbo_PrinterSelection
+            // 
+            this.cbo_PrinterSelection.FormattingEnabled = true;
+            this.cbo_PrinterSelection.Location = new System.Drawing.Point(166, 239);
+            this.cbo_PrinterSelection.Name = "cbo_PrinterSelection";
+            this.cbo_PrinterSelection.Size = new System.Drawing.Size(220, 21);
+            this.cbo_PrinterSelection.TabIndex = 110;
+            this.cbo_PrinterSelection.SelectedIndexChanged += new System.EventHandler(this.cboPrinterSelection_SelectedIndexChanged);
+            // 
+            // btn_export
+            // 
+            this.btn_export.Location = new System.Drawing.Point(1076, 323);
+            this.btn_export.Name = "btn_export";
+            this.btn_export.Size = new System.Drawing.Size(68, 23);
+            this.btn_export.TabIndex = 111;
+            this.btn_export.Text = "Export Data Sheet";
+            this.btn_export.UseVisualStyleBackColor = true;
+            // 
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1143, 509);
+            this.ClientSize = new System.Drawing.Size(1156, 527);
+            this.Controls.Add(this.btn_export);
+            this.Controls.Add(this.cbo_PrinterSelection);
+            this.Controls.Add(this.btn_StopCamera);
+            this.Controls.Add(this.btn_startCamera);
             this.Controls.Add(this.btn_BrowsePath);
             this.Controls.Add(this.cbo_VideoInputDevice);
             this.Controls.Add(this.picBox_Camera_image);
@@ -416,6 +463,10 @@
         private System.Windows.Forms.PictureBox picBox_Camera_image;
         private System.Windows.Forms.ComboBox cbo_VideoInputDevice;
         private System.Windows.Forms.Button btn_BrowsePath;
+        private System.Windows.Forms.Button btn_startCamera;
+        private System.Windows.Forms.Button btn_StopCamera;
+        private System.Windows.Forms.ComboBox cbo_PrinterSelection;
+        private System.Windows.Forms.Button btn_export;
     }
 }
 

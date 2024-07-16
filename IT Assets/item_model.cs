@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Deployment.Internal;
+using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +63,7 @@ namespace IT_Assets
                         }
 
                     }
+                    conn.Close();
                 }
             }
             catch (Exception ex)
@@ -73,10 +77,100 @@ namespace IT_Assets
         public int update() { return 0; }
 
         public int delete() { return 0; }
-        public int delete_item() { return 0; }
+       public int delete_item(int id) {
+
+            int rows;
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string deleteRecord = @"DELETE FROM items WHERE id = @id;";
+
+
+
+                    using (SQLiteCommand command = new SQLiteCommand(deleteRecord, conn))
+                    {
+                        command.Parameters.AddWithValue("@id", id); // Use parameterized query
+
+                        object result = command.ExecuteNonQuery();
+                        if (result != null && result != DBNull.Value)
+                        {
+                            rows = (int)Convert.ToInt64(result);
+                            Console.WriteLine(rows);
+                            conn.Close();
+                            return rows;
+                            
+                        }
+                        else
+                        {
+                            throw new Exception("No ID returned after insert.");
+                        }
+
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error loading Table");
+            }
+
+
+            return 0; 
+        
+        }
         public int update_item() { return 0; }
 
-        public List<item> select()
+
+        public item selectAnItem(int id)
+        {
+            item newItem = null;
+
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+                    string selectRecord = "SELECT id, company_tracking_number, name, type, serial, model, description, photo FROM items WHERE id = @id";
+
+                    using (SQLiteCommand command = new SQLiteCommand(selectRecord, conn))
+                    {
+                        command.Parameters.AddWithValue("@id", id); // Use parameterized query
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // Handle DBNull values if any field can be NULL
+                                string type = reader.IsDBNull(3) ? null : reader.GetString(3);
+                                string name = reader.IsDBNull(2) ? null : reader.GetString(2);
+                                string serial = reader.IsDBNull(4) ? null : reader.GetString(4);
+                                string model = reader.IsDBNull(5) ? null : reader.GetString(5);
+                                string description = reader.IsDBNull(6) ? null : reader.GetString(6);
+                                string photoPath = reader.IsDBNull(7) ? null : reader.GetString(7);
+                                string companyTrackingNumber = reader.IsDBNull(1) ? null : reader.GetString(1);
+                                int itemId = reader.GetInt32(0);
+
+                                // Create the new item object
+                                newItem = new item(type, name, serial, model, description, photoPath, companyTrackingNumber, itemId);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving item: {ex.Message}");
+                // Consider logging the exception details for further analysis
+            }
+
+            return newItem;
+        }
+
+
+        public List<item> Select()
 {
             List<item> itemList = new List<item>();
 

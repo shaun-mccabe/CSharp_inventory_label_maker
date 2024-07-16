@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 
 namespace IT_Assets
@@ -36,6 +37,19 @@ namespace IT_Assets
         }
 
 
-              
+        public void PrintProperties()
+        {
+            Type type = typeof(item);
+            PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            foreach (PropertyInfo property in properties)
+            {
+                object value = property.GetValue(this);
+                Console.WriteLine($"{property.Name}: {value}");
+            }
+        }
+
+
     }
+    
 }

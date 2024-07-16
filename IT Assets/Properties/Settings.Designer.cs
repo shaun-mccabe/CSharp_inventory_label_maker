@@ -23,37 +23,15 @@ namespace IT_Assets.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"C:\\Users\\smccabe\\source\\repos\\IT A" +
-            "ssets\\ITAssets.accdb\"")]
-        public string ITAssetsConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FilePath {
             get {
-                return ((string)(this["ITAssetsConnectionString"]));
+                return ((string)(this["FilePath"]));
             }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\smccabe\\source\\repo" +
-            "s\\IT Assets\\it_asset_inventory.mdf\";Integrated Security=True;Connect Timeout=30;" +
-            "Encrypt=True")]
-        public string MDFConnString {
-            get {
-                return ((string)(this["MDFConnString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Assets.mdf;In" +
-            "tegrated Security=True")]
-        public string AssetsConnectionString {
-            get {
-                return ((string)(this["AssetsConnectionString"]));
+            set {
+                this["FilePath"] = value;
             }
         }
     }

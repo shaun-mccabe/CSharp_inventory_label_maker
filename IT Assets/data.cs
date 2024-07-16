@@ -10,6 +10,8 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Data.SQLite;
+using System.Linq.Expressions;
+using System.Threading;
 
 namespace IT_Assets
 {
@@ -93,6 +95,37 @@ namespace IT_Assets
            
         }
 
+        public bool TrackingExists(string tracking)
+        {
+           try
+            {
+                SQLiteConnection conn = new SQLiteConnection(connectionString);
+                conn.Open();
+                string q = $"SELECT COUNT(*) FROM items WHERE company_tracking_number={tracking}";
+               
+                using (SQLiteCommand command = new SQLiteCommand(q, conn))
+                {
+                    object count = command.ExecuteScalar();
+                    if(count !=null && count != DBNull.Value)
+                    {
+                       
+                        if ( Convert.ToInt64(count) >= 1)
+                        {
+                          
+                            return true;
+                        }
+                    }
+                }
+                conn.Close();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message, "Error Locating Tracking");
+            }
+
+
+            return false;
+        }
 
     }
 
