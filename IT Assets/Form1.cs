@@ -25,7 +25,7 @@ namespace IT_Assets
         /*
          * TODO:
          * 
-         * Export to CSV
+         * 
          * Set Printer Combo box to default printer.
          * 
          * 
@@ -76,6 +76,8 @@ namespace IT_Assets
             {
                 installedPrinters = PrinterSettings.InstalledPrinters[i];
                 cbo_PrinterSelection.Items.Add(installedPrinters);
+                cbo_PrinterSelection.SelectedIndex = 0;
+               
             }
 
 
@@ -375,6 +377,12 @@ namespace IT_Assets
         private void cboPrinterSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void btn_export_Click(object sender, EventArgs e)
+        {
+            FileHandler fh = new FileHandler(GetFilePath(), "exportCSV.csv");
+            fh.export_database();   
         }
     }
 

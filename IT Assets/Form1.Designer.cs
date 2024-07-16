@@ -366,6 +366,7 @@
             // 
             // cbo_PrinterSelection
             // 
+            this.cbo_PrinterSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_PrinterSelection.FormattingEnabled = true;
             this.cbo_PrinterSelection.Location = new System.Drawing.Point(166, 239);
             this.cbo_PrinterSelection.Name = "cbo_PrinterSelection";
@@ -381,6 +382,7 @@
             this.btn_export.TabIndex = 111;
             this.btn_export.Text = "Export Data Sheet";
             this.btn_export.UseVisualStyleBackColor = true;
+            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
             // 
             // frm_main
             // 
