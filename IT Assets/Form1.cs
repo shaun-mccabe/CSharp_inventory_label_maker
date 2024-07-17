@@ -57,9 +57,7 @@ namespace IT_Assets
 
                 Camera = new VideoCaptureDevice();
             }
-            //Starting the Camera
-            //startCamera();
-
+ 
             //Attempting to Retrieve the photo save Path from Settings to load it into the TxtBox so the user knows where he/she is saving the photos
             string filePath = GetFilePath();
 
@@ -384,6 +382,8 @@ namespace IT_Assets
             FileHandler fh = new FileHandler(GetFilePath(), "exportCSV.csv");
             fh.export_database();   
         }
+
+       
     }
 
 

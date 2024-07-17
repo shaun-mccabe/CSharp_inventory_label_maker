@@ -197,9 +197,9 @@
             this.lbl_for_txtName.AutoSize = true;
             this.lbl_for_txtName.Location = new System.Drawing.Point(56, 70);
             this.lbl_for_txtName.Name = "lbl_for_txtName";
-            this.lbl_for_txtName.Size = new System.Drawing.Size(35, 13);
+            this.lbl_for_txtName.Size = new System.Drawing.Size(101, 13);
             this.lbl_for_txtName.TabIndex = 16;
-            this.lbl_for_txtName.Text = "Name";
+            this.lbl_for_txtName.Text = "Manufacturer Name";
             // 
             // txtName
             // 
